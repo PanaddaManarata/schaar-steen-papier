@@ -1,0 +1,50 @@
+.container{
+    width: 100%; 
+    height: 450px; 
+    margin-top: 10vw; 
+    background-color: rgb(219, 192, 219); 
+}
+
+
+.scissor{
+    
+    width: 160px; 
+    height: 200px; 
+    background-image: url(../img/scissor.svg); 
+    background-size: cover; 
+    
+
+}
+
+.stone{
+    width: 160px; 
+    height: 200px; 
+    background-image: url(../img/rock.svg); 
+    background-size: cover; 
+
+}
+
+.paper{
+    width: 160px; 
+    height: 150px; 
+    background-image: url(../img/paper.svg); 
+    background-size: cover; 
+
+}
+
+.game{
+    margin: 0 auto; 
+    padding: 9%;
+}
+
+button{
+    margin-left: 12%; 
+}
+
+.display{
+    display: block; 
+}
+
+.hide{
+    display: none; 
+}

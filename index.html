@@ -10,15 +10,73 @@
 </head>
 <body>
     
+<div class="container">
+    <div id="game-area" class="row">
+        <div id="user" class="col-md-5 game">
+            <div class="scissor hid"></div>
+            <div class="stone hide"></div>
+            <div class="paper hide"></div>
+        </div>
 
+        <div id="computer" class="col-md-5 game">
+            <div class="scissor hid"></div>
+            <div class="stone hide"></div>
+            <div class="paper hide"></div>
 
-<button id="schaar"></button>
-<button id="steen"></button>
-<button id="papier"></button>
+        </div>
+    </div>
 
+    <div id="btns" class="row">
+        <div class="col-md-6">
+            <button id="btn-scissor">schaar</button>
+            <button id="btn-stone">steen</button>
+            <button id="btn-paper">papier</button>
+        </div>
+        <div class="col-md-6">
+            <button id="btn-random">random</button>
+        </div>
+    </div>
+</div>
 
+<script>
+    var scissor = document.querySelector('.scissor'); 
+    var stone = document.querySelector('.stone'); 
+    var paper = document.querySelector('.paper'); 
 
+    var btnScissor = document.getElementById('btn-scissor'); 
+    var btnStone = document.getElementById('btn-stone'); 
+    var btnPaper = document.getElementById('btn-paper');
+    var btnRandom = document.getElementById('btn-random');
 
+    btnScissor.addEventListener('click', giveScissor);
+    btnStone.addEventListener('click', giveStone);
+    btnPaper.addEventListener('click', givePaper);
+
+    function giveScissor(){
+        console.log('Yo Scissor');
+        scissor.classList.remove('hide'); 
+        stone.classList.add('hide'); 
+        paper.classList.add('hide'); 
+}
+    function giveStone(){
+        console.log('hi stone');
+        stone.classList.remove('hide'); 
+        scissor.classList.add('hide'); 
+        paper.classList.add('hide'); 
+    }
+
+    function givePaper(){
+        console.log('hello paper')
+        stone.classList.add('hide'); 
+        scissor.classList.add('hide'); 
+        paper.classList.remove('hide'); 
+    }
+
+    function GamePlan(){
+
+    }
+
+</script>
 
 
 
