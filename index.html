@@ -9,92 +9,172 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
-<div class="container">
+        <h1>Rock, scissor & paper</h1>
+<div id="GAME" class="container">
+        
     <div id="game-area" class="row">
         <div id="user" class="col-md-5 game">
-            <div class="scissor hid"></div>
-            <div class="stone hide"></div>
-            <div class="paper hide"></div>
+            <img class=" scissor hide" src="img/scissor.svg" alt="">
+            <img class="rock hide" src="img/rock.svg" alt="">
+            <img class="paper hide" src="img/paper.svg" alt="">
         </div>
 
         <div id="computer" class="col-md-5 game">
-               <!-- <div class="scissor hid"></div>
-                <div class="stone hide"></div>
-                <div class="paper hide"></div>-->
-            <img src="" alt="" name="canvas">
+
+            <img id="imgRandom" src="" alt="" name="canvas">
 
         </div>
     </div>
 
     <div id="btns" class="row">
         <div class="col-md-6">
-            <button id="btn-scissor">schaar</button>
-            <button id="btn-stone">steen</button>
-            <button id="btn-paper">papier</button>
+           
+            <button id="btn-rock">rock</button>
+            <button id="btn-scissor">scissor</button>
+            <button id="btn-paper">paper</button>
+            
         </div>
         <div class="col-md-6">
-            <button id="btn-random">random</button>
+            <!--<button id="btn-random">random</button>-->
+            <button id="btn-reset">reset</button>
         </div>
     </div>
 </div>
 
 <script>
     var scissor = document.querySelector('.scissor'); 
-    var stone = document.querySelector('.stone'); 
+    var rock = document.querySelector('.rock'); 
     var paper = document.querySelector('.paper'); 
 
     var btnScissor = document.getElementById('btn-scissor'); 
-    var btnStone = document.getElementById('btn-stone'); 
+    var btnRock = document.getElementById('btn-rock'); 
     var btnPaper = document.getElementById('btn-paper');
-    var btnRandom = document.getElementById('btn-random');
+    //var btnRandom = document.getElementById('btn-random');
+    var btnReset = document.getElementById('btn-reset'); 
+    var  wrapper = document.querySelector('.container'); 
+
 
     btnScissor.addEventListener('click', giveScissor);
-    btnStone.addEventListener('click', giveStone);
+    btnRock.addEventListener('click', giveRock);
     btnPaper.addEventListener('click', givePaper);
-    btnRandom.addEventListener('click', giveRandom);
+    //btnRandom.addEventListener('click', giveRandom);
+    btnReset.addEventListener('click', myReset);
+    
+
+    function myReset(){
+            document.location.reload();
+        }
+
+
+
     function giveScissor(){
         console.log('Yo Scissor');
         scissor.classList.remove('hide'); 
-        stone.classList.add('hide'); 
+        rock.classList.add('hide'); 
         paper.classList.add('hide'); 
+
+        GamePlan("scissor"); 
+//when click on this button userchoise will be ' ' in function GamePlan
 }
-    function giveStone(){
+    function giveRock(){
         console.log('hi stone');
-        stone.classList.remove('hide'); 
+        rock.classList.remove('hide'); 
         scissor.classList.add('hide'); 
         paper.classList.add('hide'); 
+
+        GamePlan("rock"); 
     }
 
     function givePaper(){
         console.log('hello paper')
-        stone.classList.add('hide'); 
+        rock.classList.add('hide'); 
         scissor.classList.add('hide'); 
         paper.classList.remove('hide'); 
+
+        GamePlan("paper"); 
     }
+
+        function win(){
+            wrapper.style.backgroundColor = "green"; 
+            console.log('you win')
+
+        }
+
+        function lose(){
+            wrapper.style.backgroundColor = "red"; 
+            console.log('you lose')
+        }
+
+        function draw(){
+            wrapper.style.backgroundColor = "blue"; 
+            console.log('drawww')
+        }
+
+
+        function GamePlan(userChoice){
+            var computerchoice = giveRandom(); 
+        
+            if(userChoice + computerchoice === "rock/img/scissor.svg"){
+               win();
+               console.log("you win with rock")
+            }
+
+            else if(userChoice + computerchoice === "paper/img/rock.svg"){
+                win();
+            }
+
+            else if(userChoice + computerchoice === "scissor/img/paper.svg"){
+                win();
+            }
+
+            else if(userChoice + computerchoice === "scissor/img/rock.svg"){
+                lose(); 
+
+            }
+
+            else if(userChoice + computerchoice === "rock/img/paper.svg"){
+                lose(); 
+
+            }
+
+            else if(userChoice + computerchoice === "paper/img/scissor.svg"){
+                lose(); 
+
+            }
+
+            else if(userChoice + computerchoice === "paper/img/paper.svg"){
+               draw(); 
+
+            }
+
+            else if(userChoice + computerchoice === "scissor/img/scissor.svg"){
+                draw(); 
+
+            }
+
+            else if(userChoice + computerchoice === "rock/img/rock.svg"){
+                draw(); 
+
+            }
+
+             
+        }
 
     function giveRandom(){
-        console.log('radom hand please')
-       
-        var imagesArray = [giveStone, giveScissor, giveStone]
-        var num = Math.floor(Math.random() * 4);
-        document.canvas.src = imagesArray[num];
+        var imagesArray = [
+            "/img/scissor.svg", 
+            "/img/rock.svg", 
+            "/img/paper.svg"]  
+        var rand = imagesArray[Math.floor(Math.random() * imagesArray.length)]; 
+        document.getElementById('imgRandom').src = rand;
+        
+        return rand; 
+        }
 
-       /* var myImages1 = new Array();
-    myImages1[1] = "img/scissor.svg";
-    myImages1[2] = "img/stone.svg";
-    myImages1[3] = "img/paper.svg";
-    var rnd = Math.floor(Math.random() * myImages1.length);
-    if (rnd == 0) {
-        rnd = 1;
-    }
-    }
+       // console.log(giveRandom())
+
+        
     
-
-document.write('<img src="' + myImages1[rnd] + '"/>'); */ 
-    function GamePlan(){
-
-    }
 
 </script>
 
