@@ -1,188 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>schaar, steen, papier </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-        <h1>Rock, scissor & paper</h1>
-<div id="GAME" class="container">
-        
-    <div id="game-area" class="row">
-        <div id="user" class="col-md-5 game">
-            <img class=" scissor hide" src="img/scissor.svg" alt="scissor hand">
-            <img class="rock hide" src="img/rock.svg" alt="rock hand">
-            <img class="paper hide" src="img/paper.svg" alt="paper hand">
+    <h1>Rock, scissor & paper</h1>
+
+    <div id="GAME" class="container">
+        <h2> <span id="stand"></span></h2>
+        <div id="game-area" class="row">
+            <div id="user" class="col-md-5 game">
+                <img class=" scissor hide" src="img/scissor.svg" alt="scissor hand">
+                <img class="rock hide" src="img/rock.svg" alt="rock hand">
+                <img class="paper hide" src="img/paper.svg" alt="paper hand">
+            </div>
+
+            <div id="computer" class="col-md-5 game">
+                <img id="imgRandom" src="" alt="" name="canvas">
+            </div>
         </div>
 
-        <div id="computer" class="col-md-5 game">
+        <div id="btns" class="row">
+            <div class="col-md-6">
 
-            <img id="imgRandom" src="" alt="" name="canvas">
+                <button id="btn-rock">rock</button>
+                <button id="btn-scissor">scissor</button>
+                <button id="btn-paper">paper</button>
 
+            </div>
+            <div class="col-md-6">
+                <!--<button id="btn-random">random</button>-->
+                <button id="btn-reset">reset</button>
+            </div>
         </div>
     </div>
 
-    <div id="btns" class="row">
-        <div class="col-md-6">
-           
-            <button id="btn-rock">rock</button>
-            <button id="btn-scissor">scissor</button>
-            <button id="btn-paper">paper</button>
-            
-        </div>
-        <div class="col-md-6">
-            <!--<button id="btn-random">random</button>-->
-            <button id="btn-reset">reset</button>
-        </div>
-    </div>
-</div>
+    <script>
+        var scissor = document.querySelector('.scissor');
+        var rock = document.querySelector('.rock');
+        var paper = document.querySelector('.paper');
 
-<script>
-    var scissor = document.querySelector('.scissor'); 
-    var rock = document.querySelector('.rock'); 
-    var paper = document.querySelector('.paper'); 
-
-    var btnScissor = document.getElementById('btn-scissor'); 
-    var btnRock = document.getElementById('btn-rock'); 
-    var btnPaper = document.getElementById('btn-paper');
-    //var btnRandom = document.getElementById('btn-random');
-    var btnReset = document.getElementById('btn-reset'); 
-    var  wrapper = document.querySelector('.container'); 
+        var btnScissor = document.getElementById('btn-scissor');
+        var btnRock = document.getElementById('btn-rock');
+        var btnPaper = document.getElementById('btn-paper');
+        //var btnRandom = document.getElementById('btn-random');
+        var btnReset = document.getElementById('btn-reset');
+        var wrapper = document.querySelector('.container');
 
 
-    btnScissor.addEventListener('click', giveScissor);
-    btnRock.addEventListener('click', giveRock);
-    btnPaper.addEventListener('click', givePaper);
-    //btnRandom.addEventListener('click', giveRandom);
-    btnReset.addEventListener('click', myReset);
-    
+        btnScissor.addEventListener('click', giveScissor);
+        btnRock.addEventListener('click', giveRock);
+        btnPaper.addEventListener('click', givePaper);
+        //btnRandom.addEventListener('click', giveRandom);
+        btnReset.addEventListener('click', myReset);
 
-    function myReset(){
+
+        function myReset() {
             document.location.reload();
         }
 
 
 
-    function giveScissor(){
-        console.log('Yo Scissor');
-        scissor.classList.remove('hide'); 
-        rock.classList.add('hide'); 
-        paper.classList.add('hide'); 
+        function giveScissor() {
+            console.log('Yo Scissor');
+            scissor.classList.remove('hide');
+            rock.classList.add('hide');
+            paper.classList.add('hide');
 
-        GamePlan("scissor"); 
-//when click on this button userchoise will be ' ' in function GamePlan
-}
-    function giveRock(){
-        console.log('hi stone');
-        rock.classList.remove('hide'); 
-        scissor.classList.add('hide'); 
-        paper.classList.add('hide'); 
+            GamePlan("scissor");
+            //when click on this button userchoise will be ' ' in function GamePlan
+        }
 
-        GamePlan("rock"); 
-    }
+        function giveRock() {
+            console.log('hi stone');
+            rock.classList.remove('hide');
+            scissor.classList.add('hide');
+            paper.classList.add('hide');
 
-    function givePaper(){
-        console.log('hello paper')
-        rock.classList.add('hide'); 
-        scissor.classList.add('hide'); 
-        paper.classList.remove('hide'); 
+            GamePlan("rock");
+        }
 
-        GamePlan("paper"); 
-    }
+        function givePaper() {
+            console.log('hello paper')
+            rock.classList.add('hide');
+            scissor.classList.add('hide');
+            paper.classList.remove('hide');
 
-        function win(){
-            wrapper.style.backgroundColor = "green"; 
-            console.log('you win')
+            GamePlan("paper");
+        }
+
+        function win() {
+            wrapper.style.backgroundColor = "#99CC99"; 
+            document.getElementById('stand').innerHTML = "You win"
 
         }
 
-        function lose(){
-            wrapper.style.backgroundColor = "red"; 
-            console.log('you lose')
+        function lose() {
+            wrapper.style.backgroundColor = " #FFA255"; 
+           
+            document.getElementById('stand').innerHTML = "You lose"
         }
 
-        function draw(){
-            wrapper.style.backgroundColor = "blue"; 
-            console.log('drawww')
+        function draw() {
+            wrapper.style.backgroundColor = "#8A8DC1";
+            document.getElementById('stand').innerHTML = "Draw!!"
         }
 
 
-        function GamePlan(userChoice){
-            var computerchoice = giveRandom(); 
-        
-            if(userChoice + computerchoice === "rock/img/scissor.svg"){
-               win();
-               console.log("you win with rock")
-            }
+        function GamePlan(userChoice) {
+            var computerchoice = giveRandom();
 
-            else if(userChoice + computerchoice === "paper/img/rock.svg"){
+            if (userChoice + computerchoice === "rock/img/scissor.svg") {
                 win();
-            }
-
-            else if(userChoice + computerchoice === "scissor/img/paper.svg"){
+                console.log("you win with rock")
+            } else if (userChoice + computerchoice === "paper/img/rock.svg") {
                 win();
-            }
+            } else if (userChoice + computerchoice === "scissor/img/paper.svg") {
+                win();
+            } else if (userChoice + computerchoice === "scissor/img/rock.svg") {
+                lose();
 
-            else if(userChoice + computerchoice === "scissor/img/rock.svg"){
-                lose(); 
+            } else if (userChoice + computerchoice === "rock/img/paper.svg") {
+                lose();
 
-            }
+            } else if (userChoice + computerchoice === "paper/img/scissor.svg") {
+                lose();
 
-            else if(userChoice + computerchoice === "rock/img/paper.svg"){
-                lose(); 
+            } else if (userChoice + computerchoice === "paper/img/paper.svg") {
+                draw();
 
-            }
+            } else if (userChoice + computerchoice === "scissor/img/scissor.svg") {
+                draw();
 
-            else if(userChoice + computerchoice === "paper/img/scissor.svg"){
-                lose(); 
-
-            }
-
-            else if(userChoice + computerchoice === "paper/img/paper.svg"){
-               draw(); 
-
-            }
-
-            else if(userChoice + computerchoice === "scissor/img/scissor.svg"){
-                draw(); 
+            } else if (userChoice + computerchoice === "rock/img/rock.svg") {
+                draw();
 
             }
 
-            else if(userChoice + computerchoice === "rock/img/rock.svg"){
-                draw(); 
 
-            }
-
-             
         }
 
-    function giveRandom(){
-        var imagesArray = [
-            "/img/scissor.svg", 
-            "/img/rock.svg", 
-            "/img/paper.svg"]  
-        var rand = imagesArray[Math.floor(Math.random() * imagesArray.length)]; 
-        document.getElementById('imgRandom').src = rand;
-        
-        return rand; 
+        function giveRandom() {
+            var imagesArray = [
+                "/img/scissor.svg",
+                "/img/rock.svg",
+                "/img/paper.svg"
+            ]
+            var rand = imagesArray[Math.floor(Math.random() * imagesArray.length)];
+            document.getElementById('imgRandom').src = rand;
+
+            return rand;
         }
 
-       // console.log(giveRandom())
-
-        
-    
-
-</script>
+        // console.log(giveRandom())
+    </script>
 
 
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 </body>
+
 </html>

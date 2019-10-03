@@ -1,14 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cousine&display=swap');
+
 .container{
     width: 100%; 
-    height: 500px; 
-   
+    height: 80vh; 
     background-color: #dbc0db; 
 }
 
 h1{
     text-align: center; 
-    padding: 50px; 
+    padding: 20px; 
+    font-family: 'Monoton', cursive;
 
+}
+h2{
+    text-align: center; 
+    padding: 20px; 
+    font-family: 'Cousine', monospace;
+    font-size: 30px; 
 }
 
 /*
@@ -41,10 +50,11 @@ h1{
 .game{
     margin: 0 auto; 
     padding: 9%;
+    max-height: 20vh; 
 }
 
 #game-area{
-  min-height: 400px; 
+  min-height: 300px; 
 }
 
 button{
@@ -53,6 +63,7 @@ button{
     padding: 10px 10px; 
     background-color: rgb(240, 221, 221); 
     letter-spacing: 2px; 
+
    
 
 }
